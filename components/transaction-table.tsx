@@ -41,11 +41,6 @@ export function TransactionTable({ onChange }: { onChange?: () => void }) {
   };
 
 
-  const handleEdit = (id: string) => {
-  Router.push(`/edit/${id}`);
-};
-
-
   if (loading) return <p>Loading...</p>;
   if (!transactions.length) return <p>No transactions yet.</p>;
 
