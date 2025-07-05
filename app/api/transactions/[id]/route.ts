@@ -3,28 +3,6 @@ import { connectToDatabase } from '@/lib/mongodb';
 import Transaction from '@/lib/models/Transaction';
 import { NextResponse } from 'next/server';
 
-export async function GET(
-  _: Request,
-  { params }: { params: { id: string } }
-) {
-  await connectToDatabase();
-  
-  try {
-    const transaction = await Transaction.findById(params.id);
-
-    if (!transaction) {
-      return NextResponse.json({ error: 'Transaction not found' }, { status: 404 });
-    }
-
-    return NextResponse.json(transaction, { status: 200 });
-
-  } catch (err) {
-    console.error('GET /api/transactions/[id] error:', err);
-    return NextResponse.json({ error: err }, { status: 500 });
-  }
-}
-
-
 export async function PUT(
   req: Request,
   { params }: { params: { id: string } }
