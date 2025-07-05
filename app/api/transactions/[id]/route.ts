@@ -20,7 +20,7 @@ export async function GET(
 
   } catch (err) {
     console.error('GET /api/transactions/[id] error:', err);
-    return NextResponse.json({ error: 'Failed to fetch transaction' }, { status: 500 });
+    return NextResponse.json({ error: err }, { status: 500 });
   }
 }
 
@@ -35,7 +35,7 @@ export async function PUT(
     const updated = await Transaction.findByIdAndUpdate(params.id, data, { new: true });
     return NextResponse.json(updated, { status: 200 });
   } catch (err) {
-    return NextResponse.json({ error: 'Failed to update transaction' }, { status: 400 });
+    return NextResponse.json({ error: err }, { status: 400 });
   }
 }
 
@@ -45,6 +45,6 @@ export async function DELETE(_: Request, { params }: { params: { id: string } })
     await Transaction.findByIdAndDelete(params.id);
     return new NextResponse(null, { status: 204 });
   } catch (err) {
-    return NextResponse.json({ error: 'Failed to delete transaction' }, { status: 400 });
+    return NextResponse.json({ error: err }, { status: 400 });
   }
 }

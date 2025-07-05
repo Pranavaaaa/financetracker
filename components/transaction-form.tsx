@@ -25,7 +25,6 @@ import { Button } from "@/components/ui/button";
 import { transactionSchema } from "@/lib/validators";
 import { CategoryType, FIXED_CATEGORIES } from "@/lib/constants";
 import { format } from "date-fns";
-import { useRouter } from "next/navigation";
 
 type TransactionFormData = z.infer<typeof transactionSchema>;
 
@@ -45,7 +44,6 @@ export function TransactionForm({
   });
 
   const [loading, setLoading] = React.useState(false);
-  const router = useRouter();
 
   const onSubmit = async (data: TransactionFormData) => {
     setLoading(true);

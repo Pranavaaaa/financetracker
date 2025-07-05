@@ -66,8 +66,8 @@ A simple and modern web app to **track personal finances**, built with **Next.js
 ### 1. Clone the Repo
 
 ```bash
-git clone https://github.com/Pranavaaaa/
-cd finance-visualizer
+git clone https://github.com/Pranavaaaa/financetracker.git
+cd financetracker
 ```
 
 # Install dependencies
