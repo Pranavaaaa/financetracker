@@ -5,14 +5,11 @@ import axios from "axios";
 import { Transaction } from "@/lib/types";
 import { Button } from "@/components/ui/button";
 import { format } from "date-fns";
-import { useRouter } from "next/navigation";
 import  TransactionEdit  from "./transaction-edit";
 
 export function TransactionTable({ onChange }: { onChange?: () => void }) {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [loading, setLoading] = useState(true);
-
-  const Router = useRouter();
 
   const fetchTransactions = async () => {
     try {
