@@ -47,6 +47,7 @@ export function EditTransactionForm({
     setLoading(true);
     try {
       await axios.put(`/api/transactions/${transactionId}`, data);
+      console.log(data);
       form.reset(data);
       location.reload();
       onSuccess?.(); // Optional: to refresh UI

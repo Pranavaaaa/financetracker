@@ -10,7 +10,8 @@ export async function PUT(
   await connectToDatabase();
   try {
     const data = await req.json();
-    const updated = await Transaction.findByIdAndUpdate(params.id, data, { new: true });
+    const resolvedParams = await params; 
+    const updated = await Transaction.findByIdAndUpdate(resolvedParams.id, data, { new: true });
     return NextResponse.json(updated, { status: 200 });
   } catch (err) {
     return NextResponse.json({ error: err }, { status: 400 });
