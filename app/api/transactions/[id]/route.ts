@@ -18,10 +18,11 @@ export async function PUT(
   }
 }
 
-export async function DELETE(_: Request, { params }: { params: { id: string } }) {
+export async function DELETE(_: Request, { params }: { params: Promise<{ id: string }> }) {
   await connectToDatabase();
   try {
-    await Transaction.findByIdAndDelete(params.id);
+    const resolvedParams = await params;
+    await Transaction.findByIdAndDelete(resolvedParams.id);
     return new NextResponse(null, { status: 204 });
   } catch (err) {
     return NextResponse.json({ error: err }, { status: 400 });
